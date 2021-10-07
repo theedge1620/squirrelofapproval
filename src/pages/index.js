@@ -1,11 +1,29 @@
-import * as React from "react"
+import React from "react"
+import styled from 'styled-components'
+
+import Layout from "../components/Layout"
+
+
+
+const StyledPage = styled.div`
+  position: relative;
+  color: white;
+  width: 100%;
+  padding: 0.5rem;
+  display: flex;
+`
+
+
 
 const IndexPage = () => {
+
   return (
-    <main>
-      <title>Squirrel of Approval</title>
-      <h1>SQUIRREL OF APPROVAL</h1>      
-    </main>
+    <Layout>
+      <StyledPage>
+          <title>Squirrel of Approval</title>
+
+      </StyledPage>
+    </Layout>
   )
 }
 
