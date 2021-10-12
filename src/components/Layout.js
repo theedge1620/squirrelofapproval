@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
-import useScrollTrigger from '@material-ui/core/useScrollTrigger';
-import IconButton from '@material-ui/core/IconButton';
-import MenuSharpIcon from '@material-ui/icons/MenuSharp'
+import AppBar from '@mui/material/AppBar'
+import Toolbar from '@mui/material/Toolbar';
+import Button from '@mui/material/Button';
+import useScrollTrigger from '@mui/material/useScrollTrigger';
+import IconButton from '@mui/material/IconButton';
+import MenuSharpIcon from '@mui/icons-material/MenuSharp'
 
 import '../styles/global.css'
 

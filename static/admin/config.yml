@@ -1,5 +1,7 @@
 backend:
-  name: test-repo
+  name: git-gateway
+local_backend: true
+
 media_folder: static/imgs
 public_folder: /imgs
 
@@ -8,13 +10,17 @@ collections:
     label: Article
     folder: content/articles
     create: true
-    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    slug: '{{year}}-{{month}}-{{day}}-{{title}}'
+    path: '{{slug}}/index'
     editor:
       preview: true
     fields:
-      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Title', name: 'title', widget: 'string', hint: 'recommend hyphenating between words.  example: first-story-example' }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
       - { label: 'Description', name: 'description', widget: 'string' }
-      - { label: 'Thumbnail', name: 'thumbnail', widget: 'image', required: false}
-      - { label: 'Tags', name: 'tags', widget: 'list'}
+      - { label: 'Squirrel Rating', name: 'rating', widget: 'number', hint: 'numerical rating to help assign styling.' }
+      - { label: 'Thumbnail', name: 'thumbnail', widget: 'image', required: false, hint: 'used for thumbnail on main page.' }
+      - { label: 'Article Image', name: 'image', widget: 'image', required: false, hint: 'used for article page' }
+      - { label: 'URL Address', name: 'url', widget: 'string', hint: 'example: squirrelofapproval.com' }
+      - { label: 'Tags', name: 'tags', widget: 'list', hint: 'multiple tags allowed.  must be comma separated with no spaces' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
