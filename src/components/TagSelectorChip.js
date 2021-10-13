@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 import { Chip } from '@mui/material'
 
 const TagSelectorChip = ({tag, clicked, selected}) => {

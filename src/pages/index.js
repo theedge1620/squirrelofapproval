@@ -17,11 +17,8 @@ const StyledPage = styled.div`
  
 const IndexPage = ({data}) => {
 
-  // console.log(data)
-
   const [articleData, setArticleData] = useState(data.allMdx.nodes)
 
-  // const articles = data.allMdx.nodes
   const { tagSelected } = useContext(TagSelectorContext)
 
   console.log(articleData)
@@ -45,8 +42,6 @@ const IndexPage = ({data}) => {
 
   }, [tagSelected])
   
-
-
   return (
     <Layout>
       <StyledPage>
@@ -54,7 +49,7 @@ const IndexPage = ({data}) => {
           <TagSelector/>
           <Grid
             container
-            spacing={1}
+            spacing={5}
             style={{
               padding: `0.25rem 0.1rem`,
               margin: 0,
@@ -64,7 +59,6 @@ const IndexPage = ({data}) => {
             {articleData.map(article => {
               
               const image = getImage(article.frontmatter.thumbnail)
-              // console.log(image)
 
               return (
               <Grid item key={article.id}>

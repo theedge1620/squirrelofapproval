@@ -1,9 +1,7 @@
-import React, {useContext} from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import MenuSharpIcon from '@mui/icons-material/MenuSharp'
 
 import Logo from './Logo'
 
