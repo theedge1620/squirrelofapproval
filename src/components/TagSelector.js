@@ -5,15 +5,15 @@ import styled from 'styled-components'
 
 import { TagSelectorContext } from '../contexts/TagSelectorContext'
 
-import TagSelectorCard from './TagSelectorCard'
+import TagSelectorChip from './TagSelectorChip'
 
 const StyledLayout = styled.div`
     position: sticky;
     padding: 0.25rem;
     top: 0;
-    background: darkgrey;
     height: 5rem;
     width: 100%;
+    background: rgba(70, 70, 70, 1);
     z-index: 1000;
 `
 
@@ -23,11 +23,19 @@ const TagSelector = () => {
     
     return (
         <StyledLayout>
-            <Grid container spacing={1} justifyContent="center" alignItems="center" style={{height: `100%`}}>
+            <Grid
+                container
+                spacing={1}
+                justifyContent="center"
+                alignItems="center"
+                style={{
+                    height: `100%`,
+                }}
+            >
             {allTags.map(tag => (
                 <Grid item key={tag}>
 
-                    <TagSelectorCard
+                    <TagSelectorChip
                         clicked={handleTagSelected}
                         tag={tag}
                         selected={tagSelected === tag}

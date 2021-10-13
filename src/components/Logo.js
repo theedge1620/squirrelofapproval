@@ -19,12 +19,12 @@ const TitleHeader = styled.div`
 const SquirrelText = styled.h1`
   color: red;
   font-weight: 900;
-  font-size: clamp(2.5rem, 5vw, 3.0rem);
+  font-size: clamp(2rem, 5vw, 3.0rem);
 `
 
 const TitleText = styled.h1`
   color: white;
-  font-size: clamp(1.5rem, 2vw, 2.0rem);  
+  font-size: clamp(1.25rem, 2vw, 2.0rem);  
 
 `
 
@@ -52,17 +52,5 @@ const Logo = () => {
         </StyledLayout>
     )
 }
-
-// export const query = graphql`
-//    query LogoImageQuery {
-//      file(relativePath: {eq: "squirrel.png"}) {
-//        childImageSharp {
-//          fluid {
-//            ...GatsbyImageSharpFluid
-//          }
-//        }
-//      }
-//    }
-//  `
 
 export default Logo

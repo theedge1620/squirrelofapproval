@@ -17,7 +17,7 @@ const Layout = ({children}) => {
                 <AppBar position="relative">
                     <Toolbar>
                         <Logo/>
-                        <IconButton
+                        {/* <IconButton
                             size="medium"
                             edge="end"
                             color="inherit"
@@ -26,7 +26,7 @@ const Layout = ({children}) => {
                             <MenuSharpIcon
                                 fontSize="large"
                             />
-                        </IconButton>
+                        </IconButton> */}
                     </Toolbar>
                 </AppBar>
 

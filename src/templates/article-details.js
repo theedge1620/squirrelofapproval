@@ -2,9 +2,14 @@ import React from 'react'
 import {graphql} from 'gatsby'
 import Layout from '../components/Layout'
 import { getImage, GatsbyImage } from 'gatsby-plugin-image'
-import Moment from "react-moment"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import styled from 'styled-components'
+import { Paper, Skeleton, Typography } from '@mui/material'
+
+const StyledImageArea = styled.div`
+  position: relative;
+  margin: 0.5rem 0rem;
+`
 
 const ArticleDetails = ({ data }) => {
     
@@ -17,16 +22,36 @@ const ArticleDetails = ({ data }) => {
     
     const featuredImage = getImage(image)
 
+    let imageArea = (
+      <Skeleton
+      animation="wave"
+      variant="rectangular"
+    />
+    )
+
+    if(featuredImage){
+      imageArea = (
+        <GatsbyImage
+          image={featuredImage}
+          alt={description}
+        />
+      )
+    }
+
     return (
         <Layout>
-            <div>
-                <h2>{title}</h2>
-                <h3>{rating}</h3>
-                <div>
-                    <GatsbyImage image={featuredImage} alt={description} />
-                </div>
+            <Paper
+              style={{
+                padding: `0.5rem`
+              }}
+            >
+                <Typography variant="h2" style={{fontWeight: `900`, textTransform: 'capitalize'}}>{title}</Typography>
+                <Typography variant="h4" component="h3" >Nutz Rating: {rating}</Typography>
+                <StyledImageArea>
+                  {imageArea}
+                </StyledImageArea>
                 <MDXRenderer>{body}</MDXRenderer>
-            </div>
+            </Paper>
         </Layout>
     )
 }

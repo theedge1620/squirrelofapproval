@@ -68,7 +68,7 @@ const IndexPage = ({data}) => {
 
               return (
               <Grid item key={article.id}>
-                <Link to={`/articles/${article.slug}`} >
+                <Link to={`/articles/${article.slug}`} style={{textDecoration: 'none'}}>
                   <ArticleCards
                     title={article.frontmatter.title}
                     imgURL={image}

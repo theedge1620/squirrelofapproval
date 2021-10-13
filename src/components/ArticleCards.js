@@ -1,11 +1,18 @@
 import React, {useEffect, useState} from 'react'
 import {GatsbyImage} from 'gatsby-plugin-image'
+import styled from 'styled-components'
+import Avatar from '@mui/material/Avatar';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea, Skeleton } from '@mui/material';
+import { deepOrange } from '@mui/material/colors';
 
+const StyledAvatarContainer = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+`
 
 const ArticleCards = ({title, imgURL, description, rating}) => {
     
@@ -19,8 +26,6 @@ const ArticleCards = ({title, imgURL, description, rating}) => {
 
   }, [imgURL])
 
-  // console.log(imgURL)
-
   let img = (
     <Skeleton
       sx={{ height: 190 }}
@@ -30,21 +35,20 @@ const ArticleCards = ({title, imgURL, description, rating}) => {
   )
   
   if(imgLoaded){
-    img = 
-    // <CardMedia
-    //         component="img"
-    //         height="140"
-    //         image={imgURL}
-    //         alt="squirrel"
-    //       />
+    img = (
     <GatsbyImage
       image={imgURL}
       alt={description}
     />
+    )
   }
 
     return (
-        <Card xs={{maxWidth: 345}} style={{ maxWidth: 345 }}>
+        <Card xs={{maxWidth: 345}} style={{ 
+          maxWidth: 345,
+          position: 'relative' 
+
+        }}>
         <CardActionArea>
           {img}
           <CardContent>
@@ -56,6 +60,9 @@ const ArticleCards = ({title, imgURL, description, rating}) => {
             </Typography>
           </CardContent>
         </CardActionArea>
+        <StyledAvatarContainer>
+          <Avatar sx={{ bgcolor: deepOrange[500] }}>{rating}</Avatar>
+        </StyledAvatarContainer>
       </Card>
     )
 }
