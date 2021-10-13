@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Paper from '@mui/material/Paper'
+import { Chip } from '@mui/material'
 
 const Item = styled(Paper)`
     user-select: none;
@@ -9,11 +10,16 @@ const Item = styled(Paper)`
     
 `
 
-const TagSelectorCard = ({tag}) => {
+const TagSelectorCard = ({tag, clicked, selected}) => {
+    
+    let variant = "outlined"
+
+    if (selected){
+        variant = "filled"
+    }
+    
     return (
-        <Item>
-            {tag}
-        </Item>
+        <Chip label={tag} variant={variant} onClick={() => clicked(tag)}/>
     )
 }
 

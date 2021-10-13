@@ -1,19 +1,13 @@
+import { graphql } from 'gatsby'
+import {StaticImage} from 'gatsby-plugin-image'
 import React from 'react'
 import styled from 'styled-components'
-
-import squirrel from '../images/squirrel.png'
 
 const StyledLayout = styled.div`
     display: flex;
     flex-direction: row;
     flex-grow: 1;
     align-items: center;
-`
-
-const BackgroundIMG = styled.img`
-  margin-right: 0.1rem;
-  max-width: 20%;
-  max-height: 5rem;
 `
 
 const TitleHeader = styled.div`
@@ -35,14 +29,40 @@ const TitleText = styled.h1`
 `
 
 const Logo = () => {
-    return (
+  
+  return (
         <StyledLayout>
-            <BackgroundIMG src={squirrel}/>
+            <StaticImage
+              src="../images/squirrel.png"
+              alt="squirrel logo"
+              placeholder="tracedSVG"
+              style={{
+                maxWidth: `5rem`,
+                maxHeight: `5rem`,
+                marginRight: `0.1rem`
+              }}
+              imgStyle={{
+                maxWidth: `5rem`,
+                maxHeight: `5rem`,
+              }}
+              />
             <TitleHeader>
                 <SquirrelText>SQUIRREL</SquirrelText> <TitleText>OF APPROVAL</TitleText>
             </TitleHeader>
         </StyledLayout>
     )
 }
+
+// export const query = graphql`
+//    query LogoImageQuery {
+//      file(relativePath: {eq: "squirrel.png"}) {
+//        childImageSharp {
+//          fluid {
+//            ...GatsbyImageSharpFluid
+//          }
+//        }
+//      }
+//    }
+//  `
 
 export default Logo

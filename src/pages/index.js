@@ -1,73 +1,115 @@
-import { graphql } from "gatsby"
-import React, { useEffect, useState } from "react"
+import { Grid } from "@mui/material"
+import { graphql, Link } from "gatsby"
+import { getImage } from "gatsby-plugin-image"
+import React, { useContext, useEffect, useState } from "react"
 import styled from 'styled-components'
+import ArticleCards from "../components/ArticleCards"
 
 import Layout from "../components/Layout"
 import TagSelector from "../components/TagSelector"
+import { TagSelectorContext } from "../contexts/TagSelectorContext"
 
 const StyledPage = styled.div`
   position: relative;
   color: white;
   width: 100%;
 `
+ 
+const IndexPage = ({data}) => {
 
-const IndexPage = ({ data }) => {
+  // console.log(data)
 
-  const [allTags, setAllTags] = useState([])
-  const [selectedTag, setSelectedTag] = useState("")
+  const [articleData, setArticleData] = useState(data.allMdx.nodes)
+
+  // const articles = data.allMdx.nodes
+  const { tagSelected } = useContext(TagSelectorContext)
+
+  console.log(articleData)
 
   useEffect(() => {
-    
-    //create unique tags to filter articles.  will be sent to the <TagSelector/> component.
 
-    const tagArray = []
+    if(!tagSelected){
+      setArticleData(data.allMdx.nodes)
+      return
+    }
 
-    data.allMarkdownRemark.nodes.forEach(item => {
+    const selectedData = data.allMdx.nodes.filter(node => {
 
-      item.frontmatter.tags.forEach(tag => tagArray.push(tag))
+      return node.frontmatter.tags.includes(tagSelected)
 
     })
 
-    // console.log(tagArray)
+    console.log(selectedData)
 
-    const tags = [...new Set(tagArray)]
+    setArticleData(selectedData)
 
-    tags.sort()
+  }, [tagSelected])
+  
 
-    console.log(tags)
-
-    setAllTags(tags)
-    
-  }, [data])
-
-  const tagSelectorHandler = (tag) => {
-
-    setSelectedTag(tag)
-
-  }
 
   return (
     <Layout>
       <StyledPage>
           <title>Squirrel of Approval</title>
-          <TagSelector tags={allTags} clicked={tagSelectorHandler}/>
+          <TagSelector/>
+          <Grid
+            container
+            spacing={1}
+            style={{
+              padding: `0.25rem 0.1rem`,
+              margin: 0,
+              width: '100%',
+            }}
+          >
+            {articleData.map(article => {
+              
+              const image = getImage(article.frontmatter.thumbnail)
+              // console.log(image)
 
+              return (
+              <Grid item key={article.id}>
+                <Link to={`/articles/${article.slug}`} >
+                  <ArticleCards
+                    title={article.frontmatter.title}
+                    imgURL={image}
+                    description={article.frontmatter.description}
+                    rating={article.frontmatter.rating}
+                    key={article.id}
+                  />
+                </Link>
+              </Grid>
+            )
+              }
+            )}
+          </Grid>
       </StyledPage>
     </Layout>
   )
 }
 
 export const query = graphql`
-  query MyQuery {
-    allMarkdownRemark {
+  query PageInfoQuery {
+    allMdx (sort: {fields: frontmatter___date, order: DESC}) {
       nodes {
+        slug
         frontmatter {
-          title
           date
           description
+          rating
           tags
+          title
+          url
+          thumbnail {
+            childImageSharp {
+              gatsbyImageData(height: 190, width: 340, transformOptions: {fit: COVER})
+            }
+          }
+          image {
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
         }
-        id
       }
     }
   }

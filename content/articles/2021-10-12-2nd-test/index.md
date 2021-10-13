@@ -3,6 +3,8 @@ title: 2nd test
 date: 2021-10-12T16:38:04.749Z
 description: second test
 rating: 2
+thumbnail: squirrel.jpeg
+image: squirrel.jpeg
 url: google.com
 tags:
   - test

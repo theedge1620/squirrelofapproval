@@ -15,12 +15,12 @@ collections:
     editor:
       preview: true
     fields:
-      - { label: 'Title', name: 'title', widget: 'string', hint: 'recommend hyphenating between words.  example: first-story-example' }
+      - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
       - { label: 'Description', name: 'description', widget: 'string' }
       - { label: 'Squirrel Rating', name: 'rating', widget: 'number', hint: 'numerical rating to help assign styling.' }
-      - { label: 'Thumbnail', name: 'thumbnail', widget: 'image', required: false, hint: 'used for thumbnail on main page.' }
-      - { label: 'Article Image', name: 'image', widget: 'image', required: false, hint: 'used for article page' }
+      - { label: 'Thumbnail', name: 'thumbnail', widget: 'image', hint: 'used for thumbnail on main page.' }
+      - { label: 'Article Image', name: 'image', widget: 'image', hint: 'used for article page' }
       - { label: 'URL Address', name: 'url', widget: 'string', hint: 'example: squirrelofapproval.com' }
       - { label: 'Tags', name: 'tags', widget: 'list', hint: 'multiple tags allowed.  must be comma separated with no spaces' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
