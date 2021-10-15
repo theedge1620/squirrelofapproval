@@ -44,10 +44,10 @@ const ArticleCards = ({title, imgURL, description, rating}) => {
   }
 
     return (
-        <Card xs={{maxWidth: 345}} style={{ 
-          maxWidth: 345,
-          position: 'relative' 
-
+        <Card sx={{ 
+          // maxWidth: 345,
+          position: 'relative', 
+          width: 1
         }}>
         <CardActionArea>
           {img}

@@ -14,6 +14,9 @@ const TagSelectorChip = ({tag, clicked, selected}) => {
             label={tag}
             variant={variant}
             onClick={() => clicked(tag)}
+            style={{
+                borderRadius: `0%`
+            }}
             />
     )
 }

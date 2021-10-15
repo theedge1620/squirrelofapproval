@@ -13,7 +13,7 @@ const StyledLayout = styled.div`
     top: 0;
     height: 5rem;
     width: 100%;
-    background: rgba(70, 70, 70, 1);
+    background: var(--bgcolor);
     z-index: 1000;
 `
 
@@ -25,7 +25,7 @@ const TagSelector = () => {
         <StyledLayout>
             <Grid
                 container
-                spacing={1}
+                spacing={0.5}
                 justifyContent="center"
                 alignItems="center"
                 style={{

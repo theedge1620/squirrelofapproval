@@ -21,7 +21,7 @@ const IndexPage = ({data}) => {
 
   const { tagSelected } = useContext(TagSelectorContext)
 
-  console.log(articleData)
+  // console.log(articleData)
 
   useEffect(() => {
 
@@ -36,7 +36,7 @@ const IndexPage = ({data}) => {
 
     })
 
-    console.log(selectedData)
+    // console.log(selectedData)
 
     setArticleData(selectedData)
 

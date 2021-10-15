@@ -1,14 +1,18 @@
 import React from 'react'
 import {graphql} from 'gatsby'
 import Layout from '../components/Layout'
-import { getImage, GatsbyImage } from 'gatsby-plugin-image'
+import { getImage, GatsbyImage, StaticImage } from 'gatsby-plugin-image'
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import styled from 'styled-components'
 import { Paper, Skeleton, Typography } from '@mui/material'
 
 const StyledImageArea = styled.div`
   position: relative;
-  margin: 0.5rem 0rem;
+  margin: 2.75rem 0rem;
+  width: 100%;
+  background: white;
+  display: flex;
+  justify-content: center;
 `
 
 const ArticleDetails = ({ data }) => {
@@ -24,9 +28,9 @@ const ArticleDetails = ({ data }) => {
 
     let imageArea = (
       <Skeleton
-      animation="wave"
-      variant="rectangular"
-    />
+        animation="wave"
+        variant="rectangular"
+      />
     )
 
     if(featuredImage){
@@ -40,15 +44,34 @@ const ArticleDetails = ({ data }) => {
 
     return (
         <Layout>
+          <title>{title}</title>
             <Paper
               style={{
-                padding: `0.5rem`
+                padding: `0.5rem`,
+                overflowX: `hidden`
               }}
             >
-                <Typography variant="h2" style={{fontWeight: `900`, textTransform: 'capitalize'}}>{title}</Typography>
-                <Typography variant="h4" component="h3" >Nutz Rating: {rating}</Typography>
+                <Typography variant="h2" sx={{fontWeight: `900`, textTransform: 'capitalize', marginBottom: `0.5rem`}}>{title}</Typography>
+                <Typography variant="h5" component="h3" sx={{fontStyle: 'italic', marginLeft: `0.75rem` }} >Nutz Rating: {rating}</Typography>
                 <StyledImageArea>
                   {imageArea}
+                  <StaticImage
+                    src="../images/squirrel1.png"
+                    alt="squirrel face"
+                    style={{
+                      position: `absolute`,
+                      top: `0`,
+                      right: `0.5rem`,
+                      transform: `rotate(-45deg)`,
+                      maxWidth: `5rem`,
+                      maxHeight: `5rem`,
+                      marginRight: `0.1rem`
+                    }}
+                    imgStyle={{
+                      maxWidth: `5rem`,
+                      maxHeight: `5rem`,
+                    }}
+                  />
                 </StyledImageArea>
                 <MDXRenderer>{body}</MDXRenderer>
             </Paper>

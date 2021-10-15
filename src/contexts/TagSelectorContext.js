@@ -18,7 +18,7 @@ const TagSelectorProvider = ({children}) => {
         }
     `)
 
-    console.log(data)
+    // console.log(data)
 
     const [allTags, setAllTags] = useState([])
     const [tagSelected, setTagSelected] = useState("")
@@ -41,7 +41,7 @@ const TagSelectorProvider = ({children}) => {
     
         tags.sort()
     
-        console.log(tags)
+        // console.log(tags)
     
         setAllTags(tags)
         
@@ -49,7 +49,7 @@ const TagSelectorProvider = ({children}) => {
 
     const handleTagSelected = (value) => {
 
-        console.log(value)
+        // console.log(value)
 
         if(tagSelected === value){
             setTagSelected("")
