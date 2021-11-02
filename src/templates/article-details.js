@@ -71,6 +71,7 @@ const ArticleDetails = ({ data }) => {
                       maxWidth: `5rem`,
                       maxHeight: `5rem`,
                     }}
+                    placeholder="NONE"
                   />
                 </StyledImageArea>
                 <MDXRenderer>{body}</MDXRenderer>

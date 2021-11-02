@@ -68,7 +68,6 @@ const IndexPage = ({data}) => {
                     imgURL={image}
                     description={article.frontmatter.description}
                     rating={article.frontmatter.rating}
-                    key={article.id}
                   />
                 </Link>
               </Grid>

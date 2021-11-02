@@ -26,6 +26,7 @@ module.exports = {
     //     path: `${__dirname}`
     //   }
     // }
+    `gatsby-plugin-material-ui`,
     `gatsby-transformer-remark`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
