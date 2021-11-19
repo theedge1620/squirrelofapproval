@@ -19,16 +19,6 @@ const Layout = ({children}) => {
                 <AppBar position="relative">
                     <Toolbar>
                         <Logo/>
-                        {/* <IconButton
-                            size="medium"
-                            edge="end"
-                            color="inherit"
-                            aria-label="menu"
-                        >
-                            <MenuSharpIcon
-                                fontSize="large"
-                            />
-                        </IconButton> */}
                     </Toolbar>
                 </AppBar>
 

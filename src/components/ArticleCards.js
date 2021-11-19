@@ -1,15 +1,13 @@
 import React, {useEffect, useState} from 'react'
 import {GatsbyImage} from 'gatsby-plugin-image'
-import {css, jsx} from '@emotion/react'
 import styled from 'styled-components'
-// import { styled } from '@mui/material/styles'
 import Avatar from '@mui/material/Avatar'
-import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import { CardActionArea, Skeleton } from '@mui/material'
-import { deepOrange } from '@mui/material/colors'
+import RatingAvatar from './RatingAvatar'
+
 
 const StyledAvatarContainer = styled.div`
   position: absolute;
@@ -48,7 +46,6 @@ const ArticleCards = ({title, imgURL, description, rating}) => {
 
     return (
         <Card sx={{ 
-          // maxWidth: 345,
           position: 'relative', 
           width: 1
         }}>
@@ -65,7 +62,7 @@ const ArticleCards = ({title, imgURL, description, rating}) => {
         </CardActionArea>
         <StyledAvatarContainer>
 
-          <Avatar sx={{ bgcolor: deepOrange[500] }}>{rating}</Avatar>
+          <RatingAvatar rating={rating}/>
 
         </StyledAvatarContainer>
       </Card>

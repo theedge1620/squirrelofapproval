@@ -21,8 +21,6 @@ const IndexPage = ({data}) => {
 
   const { tagSelected } = useContext(TagSelectorContext)
 
-  // console.log(articleData)
-
   useEffect(() => {
 
     if(!tagSelected){
@@ -36,8 +34,6 @@ const IndexPage = ({data}) => {
 
     })
 
-    // console.log(selectedData)
-
     setArticleData(selectedData)
 
   }, [tagSelected])
@@ -49,19 +45,23 @@ const IndexPage = ({data}) => {
           <TagSelector/>
           <Grid
             container
-            spacing={5}
+            spacing={1}
             style={{
-              padding: `0.25rem 0.1rem`,
+              padding: `0rem 0.1rem 0.25rem`,
               margin: 0,
               width: '100%',
+              gap: `1rem`
             }}
           >
             {articleData.map(article => {
-              
+
               const image = getImage(article.frontmatter.thumbnail)
 
               return (
-              <Grid item key={article.id}>
+              <Grid
+                item
+                key={article.slug}
+              >
                 <Link to={`/articles/${article.slug}`} style={{textDecoration: 'none'}}>
                   <ArticleCards
                     title={article.frontmatter.title}
