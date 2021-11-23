@@ -5,7 +5,7 @@ import { getImage, GatsbyImage } from 'gatsby-plugin-image'
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import styled from 'styled-components'
 import { Paper, Skeleton, Typography } from '@mui/material'
-import NutsRating from '../components/NutsRating'
+import NutsRating from '../components/NutsRating/NutsRating'
 
 const StyledImageArea = styled.div`
   position: relative;

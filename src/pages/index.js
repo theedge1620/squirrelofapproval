@@ -45,30 +45,30 @@ const IndexPage = ({data}) => {
           <TagSelector/>
           <Grid
             container
+            spacing={2}
             style={{
-              padding: `0rem 1rem 1.5rem`,
-              margin: 0,
-              width: '100%',
-              gap: `1.25rem`
+              padding: `0.5rem 1rem 1.5rem`,
             }}
           >
-            {articleData.map(article => {
+            {articleData.map((article, index) => {
 
               const image = getImage(article.frontmatter.image)
 
               return (
               <Grid
                 item
+                xs={12}
+                md={6}
+                lg={4}
+                xl={3}
                 sx={{
-                  width: `min(100vw, 25rem)`,
-                  height: `clamp(15rem, 30vh, 25rem)`,
-                  minHeight: `10rem`,
-                  maxHeight: `25rem`
+                  height: `15rem`
                 }}
                 key={article.slug}
               >
                 <Link to={`/articles/${article.slug}`} style={{textDecoration: 'none'}}>
                   <ArticleCards
+                    index={index}
                     title={article.frontmatter.title}
                     imgURL={image}
                     description={article.frontmatter.description}
