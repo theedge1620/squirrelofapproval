@@ -1,5 +1,5 @@
 ---
-title: CONTINUED EPSTEIN MINIMIATION.
+title: CONTINUED EPSTEIN MINIMIZATION.
 date: 2021-12-01T10:39:03.678Z
 description: Blaming the dead.
 rating: 3
