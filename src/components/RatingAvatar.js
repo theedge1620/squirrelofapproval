@@ -10,6 +10,7 @@ const Layout = styled.div`
     right: 0%;
     display: grid;
     place-items: center;
+    transform: scale(0);
 `
 
 const StyledRating = styled.span`
@@ -24,7 +25,7 @@ const StyledRating = styled.span`
 `
 
 const RatingAvatar = ({animationComplete, rating}) => {
-    
+    console.log(animationComplete)
     const avatarRef = useRef()
     const avatarTL = useRef()
 
@@ -32,16 +33,19 @@ const RatingAvatar = ({animationComplete, rating}) => {
 
         avatarTL.current = gsap.timeline().pause()
 
-        avatarTL.current.fromTo(avatarRef.current, 
-            {scale: 0 },
-            {scale: 1, duration: 1.25, ease: "elastic.out(1, 0.3)", delay: 1.0}
+        avatarTL.current.to(avatarRef.current, 
+            {scale: 1,  duration: 1.25, ease: "elastic.out(1, 0.3)", delay: 1.0}
             )
 
     }, [])
 
     useEffect(() => {
 
+        if(!animationComplete) return
+
         avatarTL.current.play()
+
+        return
 
     }, [animationComplete])
 
