@@ -7,12 +7,30 @@ import styled from 'styled-components'
 import { Paper, Skeleton, Typography } from '@mui/material'
 import NutsRating from '../components/NutsRating/NutsRating'
 
-const StyledImageArea = styled.div`
+const StyledImageArea = styled.a`
   position: relative;
-  margin: 2.75rem 0rem;
-  width: 100%;
-  display: flex;
-  justify-content: center;
+  margin: 2.75rem auto;
+
+`
+
+const StyledBodyArea = styled.main`
+  max-width: 70ch;
+  font-size: 2em;
+  font-style: italic;
+  text-align: center;
+  margin: 2rem 0rem;
+
+  & a, a:visited {
+    color: orange;
+  }
+`
+
+const StyledLinkArea = styled.a`
+  color: orange;
+
+  &:visited{
+    color: orange;
+  }
 `
 
 const ArticleDetails = ({ data }) => {
@@ -45,7 +63,7 @@ const ArticleDetails = ({ data }) => {
           <title>{title}</title>
             <Paper
               style={{
-                padding: `0.5rem`,
+                padding: `0.5rem 1.0rem 1.0rem`,
                 overflowX: `hidden`,
                 display: `flex`,
                 flexDirection: `column`,
@@ -65,11 +83,15 @@ const ArticleDetails = ({ data }) => {
 
                 <NutsRating rating={rating}/>
 
-                <StyledImageArea>
+                <StyledImageArea href={url} target="_blank" rel="noopener">
                   {imageArea}
                 </StyledImageArea>
-
-                <MDXRenderer>{body}</MDXRenderer>
+                <StyledBodyArea>
+                <MDXRenderer>
+                  {body}
+                  </MDXRenderer>
+                  </StyledBodyArea>
+                  <StyledLinkArea href={url} target="_blank" rel="noopener">click here to be taken to the full story</StyledLinkArea>
             </Paper>
         </Layout>
     )

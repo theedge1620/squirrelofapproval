@@ -36,12 +36,16 @@ const ArticleCards = ({index, title, imgURL, description, rating}) => {
   })
 
   const [imgLoaded, setImageLoaded] = useState(false)
+  const [animationComplete, setAnimationComplete] = useState(false)
 
   useEffect(() => {
 
     contentTL.current = gsap.timeline().pause()
 
-    contentTL.current.from(contentRef.current, {opacity: 0, scale: 0.5, duration: 0.25})
+    contentTL.current.from(contentRef.current, {opacity: 0, duration: 0.25,
+      onComplete: () => {
+        setAnimationComplete(true)
+      }})
 
   },[])
 
@@ -82,6 +86,7 @@ const ArticleCards = ({index, title, imgURL, description, rating}) => {
         objectPosition: `0% 0%`
 
       }}
+      placeholder="NONE"
     />
     )
   }
@@ -117,7 +122,7 @@ const ArticleCards = ({index, title, imgURL, description, rating}) => {
         </CardActionArea>
         <StyledAvatarContainer>
 
-          <RatingAvatar rating={rating}/>
+          <RatingAvatar animationComplete={animationComplete} rating={rating}/>
 
         </StyledAvatarContainer>
       </Card>

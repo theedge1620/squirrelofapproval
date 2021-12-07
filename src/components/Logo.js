@@ -1,6 +1,11 @@
+import { Link } from 'gatsby'
 import {StaticImage} from 'gatsby-plugin-image'
 import React from 'react'
 import styled from 'styled-components'
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+`
 
 const StyledLayout = styled.div`
     display: flex;
@@ -30,6 +35,7 @@ const TitleText = styled.h1`
 const Logo = () => {
   
   return (
+    <StyledLink to="/">
         <StyledLayout>
             <StaticImage
               src="../images/squirrel.png"
@@ -49,6 +55,7 @@ const Logo = () => {
                 <SquirrelText>SQUIRREL</SquirrelText> <TitleText>OF APPROVAL</TitleText>
             </TitleHeader>
         </StyledLayout>
+        </StyledLink>
     )
 }
 
