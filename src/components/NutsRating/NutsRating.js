@@ -28,8 +28,8 @@ const NutsRating = ({rating}) => {
         <Layout ref={observerRef}>
 
             <Typography
-                variant="h5"
-                component="h3"
+                variant="h2"
+                fontSize="clamp(1em, 4vw, 1.75em)"
                 sx={{
                     fontStyle: 'italic',
                     marginLeft: `0.75rem`

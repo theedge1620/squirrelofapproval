@@ -34,7 +34,7 @@ const RatingAvatar = ({animationComplete, rating}) => {
         avatarTL.current = gsap.timeline().pause()
 
         avatarTL.current.to(avatarRef.current, 
-            {scale: 1,  duration: 1.25, ease: "elastic.out(1, 0.3)", delay: 1.0}
+            {scale: 1,  duration: 1.25, ease: "elastic.out(1, 0.3)", delay: 0.25}
             )
 
     }, [])
