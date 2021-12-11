@@ -7,6 +7,8 @@ import styled from 'styled-components'
 import { Paper, Skeleton, Typography } from '@mui/material'
 import NutsRating from '../components/NutsRating/NutsRating'
 
+import bgImg from '../images/bg-squirrel.jpeg'
+
 const StyledDivider = styled.hr`
   width: 100%;
   margin: clamp(1.5rem, 5vh, 2.5rem) 0rem;
@@ -27,7 +29,7 @@ const StyledImageArea = styled.a`
 
 const StyledBodyArea = styled.main`
   max-width: 70ch;
-  /* font-size: medium; */
+  margin-top: 1rem;
   line-height: clamp(1.75em, 5vh, 2.5em);
   text-align: center;
 
@@ -37,12 +39,22 @@ const StyledBodyArea = styled.main`
 
   &::first-line{
     font-weight: 900;
+    font-size: 1.25em;
+    line-height: 3em;
   }
 
   &::first-letter{
-    font-size: 5.5em;
-    font-style: italic;
+    font-size: 3.25em;
     font-family: serif;
+    margin: 0rem 0.25rem;
+    padding: 0rem 0.5rem;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    background-image: url(${bgImg});
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 0.5rem;
+    border: 0.25rem solid white;
   }
 
 `
@@ -94,8 +106,6 @@ const ArticleDetails = ({ data }) => {
                 alignItems: `center`
               }}
             >
-
-
                 <Typography
                   variant="h1"
                   fontSize="clamp(1.25em, 8vw, 3.5em)"
@@ -119,7 +129,7 @@ const ArticleDetails = ({ data }) => {
                     marginBottom: '1rem'
                   }}
                 >
-                  Squirreled: {formattedDate}
+                  Squirrel Approved on: <em><strong>{formattedDate}</strong></em>
                 </Typography>
 
                 <StyledImageArea href={url} target="_blank" rel="noopener">
