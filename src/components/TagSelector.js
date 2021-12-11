@@ -1,5 +1,6 @@
 import React, {useContext} from 'react'
 import Grid from '@mui/material/Grid'
+import Box from '@mui/material/Box'
 import styled from 'styled-components'
 
 import { TagSelectorContext } from '../contexts/TagSelectorContext'
@@ -13,8 +14,8 @@ const StyledLayout = styled.div`
     height: 5rem;
     width: 100%;
     background: var(--bgcolor);
-    overflow-x: scroll;
     z-index: 1000;
+    border-bottom: 0.1rem solid rgba(255, 255, 255, 0.25);
 `
 
 const TagSelector = () => {
@@ -27,22 +28,24 @@ const TagSelector = () => {
             <Grid
                 container
                 spacing={0.5}
+                flexDirection="row"
                 justifyContent="center"
                 alignItems="center"
                 style={{
                     height: `100%`,
+                    minWidth: `100%`,
+                    overflowY: `auto`
                 }}
             >
-            {allTags.map(tag => (
-                <Grid item key={tag}>
 
+                {allTags.map(tag => (
+                <Grid item key={tag}>
                     <TagSelectorChip
                         clicked={handleTagSelected}
                         tag={tag}
                         selected={tagSelected === tag}
                     />
-
-                </Grid>
+               </Grid>
                 )                
             )}
             </Grid>

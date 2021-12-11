@@ -25,7 +25,7 @@ const StyledRating = styled.span`
 `
 
 const RatingAvatar = ({animationComplete, rating}) => {
-    console.log(animationComplete)
+
     const avatarRef = useRef()
     const avatarTL = useRef()
 
