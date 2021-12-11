@@ -27,8 +27,8 @@ const StyledImageArea = styled.a`
 
 const StyledBodyArea = styled.main`
   max-width: 70ch;
-  font-size: large;
-  line-height: 2.5em;
+  /* font-size: medium; */
+  line-height: clamp(1.75em, 5vh, 2.5em);
   text-align: center;
 
   & a, a:visited {
@@ -98,7 +98,7 @@ const ArticleDetails = ({ data }) => {
 
                 <Typography
                   variant="h1"
-                  fontSize="clamp(1.75em, 10vw, 3.5em)"
+                  fontSize="clamp(1.25em, 8vw, 3.5em)"
                   sx={{
                     fontWeight: `900`,
                     textTransform: 'capitalize',
@@ -133,7 +133,7 @@ const ArticleDetails = ({ data }) => {
                   {body}
                   </MDXRenderer>
                   </StyledBodyArea>
-                  <StyledLinkArea href={url} target="_blank" rel="noopener">click here to be taken to the full story</StyledLinkArea>
+                  <StyledLinkArea href={url} target="_blank" rel="noopener">click here for the story source</StyledLinkArea>
             </Paper>
         </Layout>
     )
