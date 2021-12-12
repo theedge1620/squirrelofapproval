@@ -44,10 +44,12 @@ const StyledBodyArea = styled.main`
   }
 
   &::first-letter{
-    font-size: 3.25em;
-    font-family: serif;
+    font-size: 3.75em;
+    font-family: "Luxurious Script";
     margin: 0rem 0.25rem;
-    padding: 0rem 0.5rem;
+    padding: 0rem;
+    padding-left: 0.2em;
+    padding-right: 0.5em;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     background-image: url(${bgImg});
     background-position: center;
