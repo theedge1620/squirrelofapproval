@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react'
+import React, {useEffect, useRef} from 'react'
 import { StaticImage } from 'gatsby-plugin-image'
 import gsap from 'gsap'
 import styled from 'styled-components'
@@ -10,14 +10,12 @@ const Layout = styled.div`
     transform: scale(0);
 `
 
-const NutsIcons = ({index, show}) => {
+const NutsIcons = ({index = 0, show = false}) => {
     
-    const delay = index * 0.25
+    const delay = index * 0.25 + 0.25
 
     const iconTL = useRef()
     const iconRef = useRef()
-
-    const [loaded, setLoaded] = useState(false)
     
     useEffect(() => {
 
@@ -25,17 +23,15 @@ const NutsIcons = ({index, show}) => {
 
         iconTL.current.to(iconRef.current, {scale: 1, duration: 1.25, ease: "elastic.out(1, 0.3)", delay: delay})
 
-        setLoaded(true)
-        
     }, [])
 
     useEffect(() => {
 
-        if(!show || !loaded) return
+        if(!show ) return
 
         iconTL.current.play()
 
-    }, [show, loaded])
+    }, [show])
 
     return (
         <Layout

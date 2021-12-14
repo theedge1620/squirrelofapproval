@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useRef} from 'react'
 import {graphql} from 'gatsby'
 import Layout from '../components/Layout'
 import { getImage, GatsbyImage } from 'gatsby-plugin-image'
@@ -6,6 +6,8 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import styled from 'styled-components'
 import { Paper, Skeleton, Typography } from '@mui/material'
 import NutsRating from '../components/NutsRating/NutsRating'
+import { useInView } from 'react-intersection-observer'
+import gsap from 'gsap'
 
 import bgImg from '../images/bg-squirrel.jpeg'
 
@@ -22,13 +24,23 @@ const StyledDivider = styled.hr`
     ) fill 100% 0 stretch;
 `
 
+const TitleWrapper = styled.div``
+
+const ImageAreaWrapper = styled.div``
+
+const ImageWrapper = styled.div``
+
 const StyledImageArea = styled.a`
   position: relative;
   margin: 0rem auto;
 `
 
+const StyledBodyAreaWrapper = styled.div`
+`
+
 const StyledBodyArea = styled.main`
   max-width: 70ch;
+  opacity: 0;
   margin-top: 1rem;
   line-height: clamp(1.75em, 5vh, 2.5em);
   text-align: center;
@@ -46,17 +58,17 @@ const StyledBodyArea = styled.main`
   &::first-letter{
     font-size: 3.75em;
     font-family: "Luxurious Script";
-    margin: 0rem 0.25rem;
+    /* margin: 0rem 0.25rem;
     padding: 0rem;
     padding-left: 0.2em;
-    padding-right: 0.5em;
+    padding-right: 0.5em; */
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-    background-image: url(${bgImg});
+    /* background-image: url(${bgImg});
     background-position: center;
     background-size: cover;
-    background-repeat: no-repeat;
-    border-radius: 0.5rem;
-    border: 0.25rem solid white;
+    background-repeat: no-repeat; */
+    /* border-radius: 0.5rem;
+    border: 0.25rem solid white; */
   }
 
 `
@@ -72,6 +84,74 @@ const StyledLinkArea = styled.a`
 
 const ArticleDetails = ({ data }) => {
     
+    const titleRef = useRef()
+    const titleTLRef = useRef()
+    const picRef = useRef()
+    const picTLRef = useRef()
+    const bodyRef = useRef()
+    const bodyTLRef = useRef()
+
+    const [bodyObserverRef, bodyInView] = useInView({
+      threshold: 0.25,
+      triggerOnce: true
+    })
+
+    const [picObserverRef, picInView] = useInView({
+      threshold: 0.25,
+      triggerOnce: true
+    })
+
+    const [titleObserverRef, titleInView] = useInView({
+      threshold: 0.25,
+      triggerOnce: true
+    })
+
+  useEffect(() => {
+
+    bodyTLRef.current = gsap.timeline().pause()
+
+    bodyTLRef.current.fromTo(bodyRef.current,
+      {y: 50},
+      {y: 0, opacity: 1, duration: 0.75}
+    )
+
+    titleTLRef.current = gsap.timeline().pause()
+
+    titleTLRef.current.fromTo(titleRef.current,
+      {y: -50},
+      {y: 0, opacity: 1,duration: 0.75, delay: 0.25})
+
+    picTLRef.current = gsap.timeline().pause()
+
+    picTLRef.current.from(picRef.current,
+      {scale: 0, opacity: 0,  duration: 0.5, delay: 0.5})
+
+  }, [])
+
+  useEffect(() => {
+
+    if(!bodyInView) return
+
+    bodyTLRef.current.play()
+
+  }, [bodyInView])
+
+  useEffect(() => {
+
+    if(!titleInView) return
+
+    titleTLRef.current.play()
+
+  }, [titleInView])
+
+  useEffect(() => {
+
+    if(!picInView) return
+
+    picTLRef.current.play()
+
+  }, [picInView])
+
     const {
         body,
         frontmatter: { date, description, image, rating, title, url }
@@ -108,10 +188,15 @@ const ArticleDetails = ({ data }) => {
                 alignItems: `center`
               }}
             >
+              <TitleWrapper
+                ref={titleObserverRef}
+              >
                 <Typography
+                  ref={titleRef}
                   variant="h1"
                   fontSize="clamp(1.25em, 8vw, 3.5em)"
                   sx={{
+                    opacity: 0,
                     fontWeight: `900`,
                     textTransform: 'capitalize',
                     marginBottom: `0.75rem`,
@@ -119,6 +204,7 @@ const ArticleDetails = ({ data }) => {
                   }}>
                     {title}
                 </Typography>
+                </TitleWrapper>
 
                 <NutsRating rating={rating}/>
 
@@ -128,23 +214,39 @@ const ArticleDetails = ({ data }) => {
                   variant="caption"
                   sx={{
                     alignSelf: 'end',
-                    marginBottom: '1rem'
+                    fontSize: '.65em',
+                    marginBottom: '1rem',
+                    wordWrap: 'none'
                   }}
                 >
                   Squirrel Approved on: <em><strong>{formattedDate}</strong></em>
                 </Typography>
 
-                <StyledImageArea href={url} target="_blank" rel="noopener">
+                <ImageAreaWrapper
+                  ref={picObserverRef}
+                >
+                  <ImageWrapper
+                    ref={picRef}
+                    >
+                <StyledImageArea
+                  href={url}
+                  target="_blank"
+                  rel="noopener"
+                >
                   {imageArea}
                 </StyledImageArea>
+                </ImageWrapper>
+                </ImageAreaWrapper>
 
                 <StyledDivider/>
 
-                <StyledBodyArea>
+                  <StyledBodyAreaWrapper ref={bodyObserverRef}>
+                <StyledBodyArea ref={bodyRef}>
                 <MDXRenderer>
                   {body}
                   </MDXRenderer>
                   </StyledBodyArea>
+                  </StyledBodyAreaWrapper>
                   <StyledLinkArea href={url} target="_blank" rel="noopener">click here for the story source</StyledLinkArea>
             </Paper>
         </Layout>
