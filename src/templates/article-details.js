@@ -9,8 +9,6 @@ import NutsRating from '../components/NutsRating/NutsRating'
 import { useInView } from 'react-intersection-observer'
 import gsap from 'gsap'
 
-import bgImg from '../images/bg-squirrel.jpeg'
-
 const StyledDivider = styled.hr`
   width: 100%;
   margin: clamp(1.5rem, 5vh, 2.5rem) 0rem;
@@ -28,7 +26,9 @@ const TitleWrapper = styled.div``
 
 const ImageAreaWrapper = styled.div``
 
-const ImageWrapper = styled.div``
+const ImageWrapper = styled.div`
+  opacity: 0;
+`
 
 const StyledImageArea = styled.a`
   position: relative;
@@ -41,7 +41,6 @@ const StyledBodyAreaWrapper = styled.div`
 const StyledBodyArea = styled.main`
   max-width: 70ch;
   opacity: 0;
-  margin-top: 1rem;
   line-height: clamp(1.75em, 5vh, 2.5em);
   text-align: center;
 
@@ -58,17 +57,7 @@ const StyledBodyArea = styled.main`
   &::first-letter{
     font-size: 3.75em;
     font-family: "Luxurious Script";
-    /* margin: 0rem 0.25rem;
-    padding: 0rem;
-    padding-left: 0.2em;
-    padding-right: 0.5em; */
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-    /* background-image: url(${bgImg});
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat; */
-    /* border-radius: 0.5rem;
-    border: 0.25rem solid white; */
   }
 
 `
@@ -91,7 +80,7 @@ const ArticleDetails = ({ data }) => {
     const bodyRef = useRef()
     const bodyTLRef = useRef()
 
-    const [bodyObserverRef, bodyInView] = useInView({
+    const [titleObserverRef, titleInView] = useInView({
       threshold: 0.25,
       triggerOnce: true
     })
@@ -101,8 +90,8 @@ const ArticleDetails = ({ data }) => {
       triggerOnce: true
     })
 
-    const [titleObserverRef, titleInView] = useInView({
-      threshold: 0.25,
+    const [bodyObserverRef, bodyInView] = useInView({
+      threshold: 0.2,
       triggerOnce: true
     })
 
@@ -123,8 +112,9 @@ const ArticleDetails = ({ data }) => {
 
     picTLRef.current = gsap.timeline().pause()
 
-    picTLRef.current.from(picRef.current,
-      {scale: 0, opacity: 0,  duration: 0.5, delay: 0.5})
+    picTLRef.current.fromTo(picRef.current,
+      {x: 100, opacity: 0},
+      {x: 0, opacity:1,  duration: 0.5, delay: 0.5})
 
   }, [])
 
@@ -210,24 +200,27 @@ const ArticleDetails = ({ data }) => {
 
                 <StyledDivider/>
 
-                <Typography
-                  variant="caption"
-                  sx={{
-                    alignSelf: 'end',
-                    fontSize: '.65em',
-                    marginBottom: '1rem',
-                    wordWrap: 'none'
-                  }}
-                >
-                  Squirrel Approved on: <em><strong>{formattedDate}</strong></em>
-                </Typography>
+
 
                 <ImageAreaWrapper
                   ref={picObserverRef}
                 >
+
                   <ImageWrapper
                     ref={picRef}
                     >
+
+                    <Typography
+                      variant="caption"
+                      sx={{
+                        fontSize: '.65em',
+                        marginBottom: '1rem',
+                        wordWrap: 'none'
+                      }}
+                    >
+                      Squirrel Approved on: <em><strong>{formattedDate}</strong></em>
+                    </Typography>
+
                 <StyledImageArea
                   href={url}
                   target="_blank"

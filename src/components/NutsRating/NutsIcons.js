@@ -10,10 +10,8 @@ const Layout = styled.div`
     transform: scale(0);
 `
 
-const NutsIcons = ({index = 0, show = false}) => {
+const NutsIcons = ({delay = 0.25, show = false}) => {
     
-    const delay = index * 0.25 + 0.25
-
     const iconTL = useRef()
     const iconRef = useRef()
     

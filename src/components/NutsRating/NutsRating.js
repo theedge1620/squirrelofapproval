@@ -75,7 +75,7 @@ const NutsRating = ({rating}) => {
                     
                     return <NutsIcons
                                 key={`${new Date()}${index}`}
-                                index={index}
+                                delay={index * 0.25 + 0.1}
                                 show={animationComplete}
                             />
                 })}
