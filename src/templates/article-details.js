@@ -45,7 +45,6 @@ const StyledBodyArea = styled.main`
   opacity: 0;
   line-height: 2em;
   text-align: center;
-  font-size: clamp(1.2em, 5vw, 1.8em);
 
   & a, a:visited {
     color: orange;
