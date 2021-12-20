@@ -1,6 +1,11 @@
 import React from 'react'
 import TagSelectorProvider from './src/contexts/TagSelectorContext'
 import './src/styles/global.css'
+import '@fontsource/vujahday-script'
+import '@fontsource/bangers'
+import '@fontsource/ubuntu'
+import '@fontsource/luxurious-script'
+
 
 import { createTheme, StyledEngineProvider, ThemeProvider } from '@mui/material/styles';
 import { CacheProvider } from '@emotion/react';
@@ -21,12 +26,6 @@ const theme = createTheme({
       main: '#f50057',
     },
   },
-  typography: {
-    fontFamily: [
-      'Rubik',
-      'sans-serif'
-    ]
-  }
 })
 
 // Wraps every page in a component

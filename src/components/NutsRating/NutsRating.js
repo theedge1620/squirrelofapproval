@@ -63,6 +63,7 @@ const NutsRating = ({rating}) => {
             <Typography
                 variant="h2"
                 fontSize="clamp(1em, 4vw, 1.75em)"
+                fontFamily="Ubuntu"
                 sx={{
                     fontStyle: 'italic',
                     marginLeft: `0.75rem`

@@ -22,14 +22,17 @@ const TitleHeader = styled.div`
 
 const SquirrelText = styled.h1`
   color: red;
-  font-weight: 900;
-  font-size: clamp(2rem, 5vw, 3.0rem);
+  font-size: 3.5rem;
+  font-family: 'Bangers';
+  text-transform: capitalize;
+  letter-spacing: 0.25rem;
 `
 
 const TitleText = styled.h1`
-  color: white;
-  font-size: clamp(1.25rem, 2vw, 2.0rem);  
-
+  color: yellow;
+  font-size: 1.5rem;  
+  font-family: 'Vujahday Script', cursive;
+  word-spacing: 0.35rem;
 `
 
 const Logo = () => {

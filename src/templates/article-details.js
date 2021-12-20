@@ -28,6 +28,8 @@ const ImageAreaWrapper = styled.div``
 
 const ImageWrapper = styled.div`
   opacity: 0;
+  display: flex;
+  flex-direction: column;
 `
 
 const StyledImageArea = styled.a`
@@ -41,8 +43,9 @@ const StyledBodyAreaWrapper = styled.div`
 const StyledBodyArea = styled.main`
   max-width: 70ch;
   opacity: 0;
-  line-height: clamp(1.75em, 5vh, 2.5em);
+  line-height: 2em;
   text-align: center;
+  font-size: clamp(1.2em, 5vw, 1.8em);
 
   & a, a:visited {
     color: orange;
@@ -51,7 +54,6 @@ const StyledBodyArea = styled.main`
   &::first-line{
     font-weight: 900;
     font-size: 1.25em;
-    line-height: 3em;
   }
 
   &::first-letter{
@@ -185,6 +187,7 @@ const ArticleDetails = ({ data }) => {
                   ref={titleRef}
                   variant="h1"
                   fontSize="clamp(1.25em, 8vw, 3.5em)"
+                  fontFamily="Ubuntu"
                   sx={{
                     opacity: 0,
                     fontWeight: `900`,
@@ -200,8 +203,6 @@ const ArticleDetails = ({ data }) => {
 
                 <StyledDivider/>
 
-
-
                 <ImageAreaWrapper
                   ref={picObserverRef}
                 >
@@ -212,6 +213,7 @@ const ArticleDetails = ({ data }) => {
 
                     <Typography
                       variant="caption"
+                      fontFamily="Ubuntu"
                       sx={{
                         fontSize: '.65em',
                         marginBottom: '1rem',

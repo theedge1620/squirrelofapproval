@@ -1,6 +1,10 @@
 import React from 'react'
 import TagSelectorProvider from './src/contexts/TagSelectorContext'
 import './src/styles/global.css'
+import '@fontsource/vujahday-script'
+import '@fontsource/bangers'
+import '@fontsource/ubuntu'
+import '@fontsource/luxurious-script'
 
 import { createTheme, StyledEngineProvider, ThemeProvider } from '@mui/material/styles';
 
@@ -13,12 +17,6 @@ const theme = createTheme({
     secondary: {
       main: '#f50057',
     },
-  },
-  typography: {
-    fontFamily: [
-      'Rubik',
-      'sans-serif'
-    ]
   }
 })
 
