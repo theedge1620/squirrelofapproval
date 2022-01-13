@@ -2,6 +2,7 @@ module.exports = {
   siteMetadata: {
     siteUrl: "https://www.squirrelofapproval.com",
     title: "Squirrel of Approval",
+    description: "The world's leading squirrel approved commentary site for all the news that makes you go a bit nutz."
   },
   plugins: [
     "gatsby-plugin-netlify-cms",
@@ -19,18 +20,10 @@ module.exports = {
       }
     },
     `gatsby-plugin-image`,
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     name: `images`,
-    //     path: `${__dirname}`
-    //   }
-    // }
-    `gatsby-plugin-styled-components`,
-    `gatsby-plugin-material-ui`,
     `gatsby-transformer-remark`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-styled-components`
     
 ],
 };

@@ -18,8 +18,6 @@ const TagSelectorProvider = ({children}) => {
         }
     `)
 
-    // console.log(data)
-
     const [allTags, setAllTags] = useState([])
     const [tagSelected, setTagSelected] = useState("")
 
@@ -34,22 +32,16 @@ const TagSelectorProvider = ({children}) => {
           item.frontmatter.tags.forEach(tag => tagArray.push(tag))
     
         })
-    
-        // console.log(tagArray)
-    
+        
         const tags = [...new Set(tagArray)]
     
         tags.sort()
-    
-        // console.log(tags)
-    
+        
         setAllTags(tags)
         
       }, [data])
 
     const handleTagSelected = (value) => {
-
-        // console.log(value)
 
         if(tagSelected === value){
             setTagSelected("")
