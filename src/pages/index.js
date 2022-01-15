@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import ArticleCards from "../components/ArticleCards"
 
 import Layout from "../components/Layout"
+import SEO from "../components/SEO"
 import TagSelector from "../components/TagSelector"
 import { TagSelectorContext } from "../contexts/TagSelectorContext"
 
@@ -20,6 +21,8 @@ const IndexPage = ({data}) => {
   const [articleData, setArticleData] = useState(data.allMdx.nodes)
 
   const { tagSelected } = useContext(TagSelectorContext)
+
+  const {description, siteUrl, title} = data.site.siteMetadata
 
   useEffect(() => {
 
@@ -40,8 +43,12 @@ const IndexPage = ({data}) => {
   
   return (
     <Layout>
+      <SEO
+        title={title}
+        description={description}
+        pathname={siteUrl}
+      />
       <StyledPage>
-          <title>Squirrel of Approval</title>
           <TagSelector/>
           <Grid
             container
@@ -108,6 +115,13 @@ export const query = graphql`
             }
           }
         }
+      }
+    },
+    site{
+      siteMetadata{
+        title
+        description
+        siteUrl
       }
     }
   }

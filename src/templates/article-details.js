@@ -8,6 +8,7 @@ import { Paper, Skeleton, Typography } from '@mui/material'
 import NutsRating from '../components/NutsRating/NutsRating'
 import { useInView } from 'react-intersection-observer'
 import gsap from 'gsap'
+import SEO from '../components/SEO'
 
 const StyledDivider = styled.hr`
   width: 100%;
@@ -169,7 +170,12 @@ const ArticleDetails = ({ data }) => {
 
     return (
         <Layout>
-          <title>{title}</title>
+          <SEO
+            title={title}
+            description={description}
+            pathname={url}
+            article={true}
+          />
             <Paper
               style={{
                 padding: `0.5rem 1.0rem 1.0rem`,
