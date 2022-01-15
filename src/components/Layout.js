@@ -36,7 +36,7 @@ const Layout = ({children}) => {
 
                 {children}
                 <StyledFooter>
-                    Squirrel of Approval - 2021
+                    Squirrel of Approval - 2022
                 </StyledFooter>
             </StyledLayout>
     )
