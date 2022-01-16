@@ -146,9 +146,11 @@ const ArticleDetails = ({ data }) => {
 
     const {
         body,
-        frontmatter: { date, description, image, rating, title, url }
+        frontmatter: { date, description, image, rating, tags, title, url },
+        slug
     } = data.mdx
     
+
     const formattedDate = new Date(date).toLocaleDateString('en-us', { day:"numeric", year:"numeric", month:"short"})
     const featuredImage = getImage(image)
 
@@ -173,8 +175,10 @@ const ArticleDetails = ({ data }) => {
           <SEO
             title={title}
             description={description}
-            pathname={url}
+            pathname={`/articles/${slug}`}
             article={true}
+            tags={tags}
+            image={image}
           />
             <Paper
               style={{
@@ -266,9 +270,12 @@ query PageBuilderQuery($slug: String!) {
           }
         }
         rating
+        tags
         title
         url
       }
+      slug
+
     }
   }
 `

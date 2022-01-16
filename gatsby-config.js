@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     siteUrl: "https://www.squirrelofapproval.com",
     title: "Squirrel of Approval",
-    description: "The world's leading squirrel approved commentary site for all the news that makes you go a bit nutz."
+    description: "Squirrel of Approval is the world's leading squirrel approved commentary site for all the news that makes you go a bit nutz."
   },
   plugins: [
     "gatsby-plugin-netlify-cms",

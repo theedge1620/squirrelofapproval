@@ -6,7 +6,9 @@ const SEO = ({
     title = null,
     description = null,
     pathname = null,
-    article = false
+    article = false,
+    tags = null,
+    image = null
     }) => {
 
     const {site} = useStaticQuery(query)
@@ -27,15 +29,38 @@ const SEO = ({
         <Helmet title={seo.title}>
             <meta name='description' content={seo.description}/>
             
-            {seo.url && <meta property='og:url' content={seo.siteUrl} />}
+            {seo.siteUrl && <meta property='og:url' content={seo.siteUrl} />}
 
-            {(article ? true : null) && <meta property='og:type' content='article' />}
+            {(article ? true : null) && (
+            <meta property='og:type' content='article' />
+                
+            )}
+
+            {(article ? true : null) && (
+                <script type="application/ld+json">
+                    {`
+                        {
+                            "@context": "https://schema.org",
+                            "@type":"blog",
+                            "name": "${seo.title}",
+                            "description": "${seo.description}",
+                            "url":"${seo.siteUrl}",
+                            "image":"${image || null}"
+                        }                                   
+                    `}
+                </script>               
+            
+            )}
+
 
             {seo.title && <meta property='og:title' content={seo.title} />}
 
             {seo.description && (
                 <meta property='og:description' content={seo.description}/>
             )}
+
+            {tags && <meta name='keywords' content={tags.join(',')} />}
+
         </Helmet>
     )
 }
